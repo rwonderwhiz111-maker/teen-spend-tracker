@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendFlix - Your Entertainment Spend Tracker 🎬</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="app-title">SPENDFLIX</h1>
+            <p class="app-subtitle">Unlimited spending tracking 🎬</p>
+            <div class="total-section">
+                <div class="total-label">Total Spent</div>
+                <div class="total-amount" id="totalAmount">₹0.00</div>
+                <div class="total-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Transactions</span>
+                        <span class="stat-value" id="totalTransactions">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Avg. Spend</span>
+                        <span class="stat-value" id="avgSpend">₹0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">This Month</span>
+                        <span class="stat-value" id="monthlySpend">₹0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Add Spend Form -->
+        <section class="add-spend-section">
+            <div class="form-card">
+                <h2 class="form-title">Add to Your Watchlist 🎬</h2>
+                <form id="spendForm" class="spend-form">
+                    <div class="input-group">
+                        <label for="spendName" class="input-label">What did you stream?</label>
+                        <input 
+                            type="text" 
+                            id="spendName" 
+                            placeholder="e.g., Netflix subscription, movie tickets, popcorn..."
+                            required
+                            maxlength="50"
+                        >
+                    </div>
+                    <div class="input-group">
+                        <label for="spendAmount" class="input-label">How much? 💰</label>
+                        <input 
+                            type="number" 
+                            id="spendAmount" 
+                            placeholder="0.00"
+                            step="0.01"
+                            min="0"
+                            max="99999.99"
+                            required
+                        >
+                        <div class="quick-amounts">
+                            <button type="button" class="quick-btn" data-amount="50">₹50</button>
+                            <button type="button" class="quick-btn" data-amount="100">₹100</button>
+                            <button type="button" class="quick-btn" data-amount="200">₹200</button>
+                            <button type="button" class="quick-btn" data-amount="500">₹500</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="add-btn">
+                        <span class="btn-text">▶ Add to Library</span>
+                        <span class="btn-emoji">🎭</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Spends List -->
+        <section class="spends-section">
+            <div class="spends-header">
+                <h2 class="spends-title">Continue Watching 📽️</h2>
+                <div class="header-controls">
+                    <select id="filterCategory" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="🍔">Food & Drinks</option>
+                        <option value="👕">Fashion</option>
+                        <option value="🎮">Gaming</option>
+                        <option value="📱">Tech</option>
+                        <option value="🚗">Transport</option>
+                        <option value="💄">Beauty</option>
+                        <option value="🎬">Entertainment</option>
+                        <option value="💸">Other</option>
+                    </select>
+                    <button id="clearAllBtn" class="clear-all-btn" style="display: none;">
+                        Clear All 🗑️
+                    </button>
+                </div>
+            </div>
+            <div id="spendsList" class="spends-list">
+                <div class="empty-state">
+                    <div class="empty-emoji">🎬</div>
+                    <h3 class="empty-title">Your library is empty</h3>
+                    <p class="empty-text">Start adding your entertainment expenses to track your streaming habits 🍿</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
